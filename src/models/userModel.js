@@ -93,27 +93,3 @@ userSchema.methods.validatePassword = async function (passwordInputByUser) {
 };
 
 module.exports = mongoose.model("User", userSchema);
-
-
-
-
-
-// const userSchema = new mongoose.Schema(
-//   {
-//     gender: {
-//       type: String,
-//       enum: {
-//         values: ["male", "female", "other"],
-//         message: `{VALUE} is not a valid gender type`,
-//       },
-//     },
-//     isPremium: {
-//       type: Boolean,
-//       default: false,
-//     },
-//     membershipType: {
-//       type: String,
-//     },
-//   }
-// );
-//
