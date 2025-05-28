@@ -1,7 +1,7 @@
 const mongoose = require("mongoose");
 const validator = require("validator");
 const jwt = require("jsonwebtoken");
-const bcrypt = require("bcrypt");
+const bcrypt = require("bcrypt"); 
 
 const userSchema = new mongoose.Schema(
     {
@@ -52,7 +52,7 @@ const userSchema = new mongoose.Schema(
         },
         photoUrl: {
             type: String,
-            default: "https://avatars.githubusercontent.com/u/205034377?v=4",
+            default: "https://geographyandyou.com/images/user-profile.png",
             validate(value) {
                 if (!validator.isURL(value)) {
                     throw new Error("Invalid URL: " + value);
@@ -73,7 +73,7 @@ const userSchema = new mongoose.Schema(
 userSchema.methods.getJWT = async function () {
     const user = this;
   
-    const token = await jwt.sign({ _id: user._id }, "KANTESH@123", {
+    const token = await jwt.sign({ _id: user._id }, process.env.JWT_SECRET, {
       expiresIn: "7d",
     });
   
